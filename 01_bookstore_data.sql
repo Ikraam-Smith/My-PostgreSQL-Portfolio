@@ -1,5 +1,5 @@
 /* In my first postgresql porfolio project i will answer a few basic
-questions on a bookstore dataset obtained on Kaggle */
+questions based on a bookstore dataset obtained on Kaggle */
 
 -- First create the table
 CREATE TABLE bookstore_data
