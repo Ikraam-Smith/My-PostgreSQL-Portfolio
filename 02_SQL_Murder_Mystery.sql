@@ -21,7 +21,7 @@ SELECT * FROM interview
 WHERE person_id IN (14887,16371);
 
 --Use the information from the interview to find potential suspects
-SELECT* FROM get_fit_now_member
+SELECT * FROM get_fit_now_member
 INNER JOIN get_fit_now_check_in
 ON get_fit_now_member.id = get_fit_now_check_in.membership_id
 WHERE get_fit_now_check_in.check_in_date = 20180109
