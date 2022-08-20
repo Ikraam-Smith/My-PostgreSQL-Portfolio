@@ -55,4 +55,4 @@ ON facebook_event_checkin.person_id = person.id
 WHERE person.id IN (78881,90700,99716)
 AND date BETWEEN 20171201 AND 20171231;
 
---The woman who hired Jeremy Bowere to commit the murder is Miranda Priestly
+--The woman who hired Jeremy Bowers to commit the murder is Miranda Priestly
