@@ -1,4 +1,4 @@
--- The following queries where used to solve the SQL Murder Mystery game at https://mystery.knightlab.com/
+--The following queries where used to solve the SQL Murder Mystery game at https://mystery.knightlab.com/
 
 /*The only thing you remember about the crime scene report was that it was a murder
 on 15 Jan 2018 that took place in SQL City */
