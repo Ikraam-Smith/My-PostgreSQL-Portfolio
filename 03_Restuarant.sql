@@ -51,7 +51,9 @@ VALUES
 SELECT product_name,COUNT(sales.product_id) FROM sales
 INNER JOIN menu
 ON sales.product_id = menu.product_id
-GROUP BY product_name;
+GROUP BY product_name
+ORDER BY COUNT (sales.product_id) DESC
+LIMIT 1;
 
 --How many days has each customer visited the restuarant?
 SELECT customers.customer_id,first_name,last_name,COUNT (DISTINCT order_date) 
