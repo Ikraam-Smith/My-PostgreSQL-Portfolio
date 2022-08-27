@@ -1,4 +1,4 @@
-/* In this project i will use the tables created to answer the below questions using subqueries */
+/* In this guided project with techTFQ on Youtube i will use the tables created to answer the below questions using subqueries */
 
 CREATE TABLE department(
 dept_id INTEGER ,
@@ -47,13 +47,6 @@ VALUES
 (123, 'Vikram', 'IT', 8000),
 (124, 'Dheeraj', 'IT', 11000);
 
-CREATE TABLE employee_history(
-emp_id INTEGER REFERENCES employee(emp_id),
-emp_name VARCHAR(50) NOT NULL,
-dept_name VARCHAR(50) REFERENCES department(dept_name),
-salary INTEGER,
-location VARCHAR(100));
-
 CREATE TABLE sales(
 store_id INTEGER,
 store_name VARCHAR(50),
@@ -96,3 +89,26 @@ salary of that department */
 SELECT * FROM employee e1
 WHERE salary > 
 (SELECT AVG(salary) FROM employee e2 where e2.dept_name = e1.dept_name);
+
+--Find stores who's sales where better than the average sales accross all stores
+WITH sales AS
+(SELECT store_name,SUM(price) AS total_sales
+FROM sales
+GROUP BY store_name)
+SELECT * FROM sales
+INNER JOIN (SELECT AVG(total_sales) AS sales
+FROM sales x) avg_sales
+ON sales.total_sales > avg_sales.sales;
+
+--Fetch all employee details and add remarks to these employees who earn more than the average salary
+SELECT *,(CASE WHEN salary > (SELECT AVG(salary) FROM employee)
+		  THEN 'Higher than average'
+		  ELSE NULL
+		  END) AS remarks
+FROM employee;
+
+--Find the stores that have sold more units than the average units sold by all stores.
+SELECT store_name,SUM(quantity)
+FROM sales
+GROUP BY store_name
+HAVING SUM(quantity) > (SELECT AVG(quantity) FROM sales);
