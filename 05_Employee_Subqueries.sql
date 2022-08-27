@@ -1,3 +1,5 @@
+/* In this project i will use the tables created to answer the below questions using subqueries */
+
 CREATE TABLE department(
 dept_id INTEGER ,
 dept_name VARCHAR(50) PRIMARY KEY,
@@ -72,3 +74,25 @@ VALUES
 (3, 'Apple Store 3','AirPods Pro', 3, 750),
 (4, 'Apple Store 4','iPhone 12 Pro', 2, 1500),
 (4, 'Apple Store 4','MacBook pro 16', 1, 3500);
+
+/* Find the employees who's salary is greater than the average salary 
+earned by all employees */
+SELECT * FROM employee
+WHERE salary > (SELECT AVG(salary) FROM employee);
+
+--Find the employees who earn the highest salary in each department
+SELECT * FROM employee
+WHERE (dept_name,salary) IN
+(SELECT dept_name,MAX(salary) FROM employee
+GROUP BY dept_name);
+
+--Find the departments who do not have any employees
+SELECT * FROM department
+WHERE dept_name 
+NOT IN (SELECT DISTINCT(dept_name) FROM employee);
+
+/*Find the employees in each department who earn more than the average 
+salary of that department */
+SELECT * FROM employee e1
+WHERE salary > 
+(SELECT AVG(salary) FROM employee e2 where e2.dept_name = e1.dept_name);
