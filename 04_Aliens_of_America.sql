@@ -47,8 +47,7 @@ FROM aliens;
 --I then used the above query as a subquery to display only aliens who are above the average age
 SELECT first_name,last_name,(2022-birth_year)
 FROM aliens
-WHERE (2022-birth_year)
-AS age > (SELECT ROUND(AVG(2022-birth_year),2) FROM aliens);
+WHERE (2022-birth_year) > (SELECT ROUND(AVG(2022-birth_year),2) FROM aliens);
 
 --Lastly list the aliens classified as aggressive
 SELECT first_name,last_name,type
