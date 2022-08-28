@@ -1,4 +1,5 @@
-/* In this guided project with techTFQ on Youtube i will use the tables created to answer the below questions using subqueries */
+/* In this guided project with techTFQ on Youtube i will use the tables
+ created to answer the below questions using subqueries */
 
 CREATE TABLE department(
 dept_id INTEGER ,
