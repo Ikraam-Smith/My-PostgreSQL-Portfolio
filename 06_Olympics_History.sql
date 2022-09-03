@@ -1,3 +1,7 @@
+/* In this project based on the dataset, 120 years of olympic history (till 2016), obtained on Kaggle I will used the
+data provided to answer a few questions */
+
+--I first created the tables
 CREATE TABLE olympic_history(
 id INTEGER,
 name VARCHAR(150),
@@ -19,6 +23,8 @@ CREATE TABLE regions(
 noc VARCHAR(10),
 region VARCHAR(50),
 notes VARCHAR(50));
+
+--I then used the Postgresql import function to import the csv files into the tables and answer the below questions
 
 --How many olympic games have been held?
 SELECT COUNT (DISTINCT(games))
